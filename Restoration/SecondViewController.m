@@ -8,7 +8,11 @@
 
 #import "SecondViewController.h"
 
-@interface SecondViewController ()
+static NSString *const kMessageRestorationKey = @"kMessageRestorationKey";
+
+@interface SecondViewController ()<
+UIViewControllerRestoration>
+@property (strong, nonatomic) IBOutlet UITextField *messageInput;
 
 @end
 
@@ -16,22 +20,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.restorationClass = [SecondViewController class];
+    self.restorationIdentifier = @"SecondViewController";
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) encodeRestorableStateWithCoder:(NSCoder *)coder {
+    [super encodeRestorableStateWithCoder:coder];
+    [coder encodeObject:_messageInput.text forKey:kMessageRestorationKey];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) decodeRestorableStateWithCoder:(NSCoder *)coder{
+    [super decodeRestorableStateWithCoder:coder];
+    self.messageInput.text = [coder decodeObjectForKey:kMessageRestorationKey];
 }
-*/
+
++ (UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder {
+    SecondViewController* vc = nil;
+    UIStoryboard* sb = [coder decodeObjectForKey:UIStateRestorationViewControllerStoryboardKey];
+    if (sb) {
+        vc = (SecondViewController*)[sb instantiateViewControllerWithIdentifier:@"SecondViewController"];
+        vc.restorationIdentifier = [identifierComponents lastObject];
+        vc.restorationClass = [SecondViewController class];
+    }
+    return vc;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [_messageInput becomeFirstResponder];
+}
+
+- (IBAction)dismiss:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

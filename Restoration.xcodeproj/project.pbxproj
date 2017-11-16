@@ -15,6 +15,7 @@
 		0D4476D71FBD8EC2004BA520 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4476D61FBD8EC2004BA520 /* main.m */; };
 		0D4476E11FBD8EC2004BA520 /* RestorationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4476E01FBD8EC2004BA520 /* RestorationTests.m */; };
 		0D4476EC1FBD8EC2004BA520 /* RestorationUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4476EB1FBD8EC2004BA520 /* RestorationUITests.m */; };
+		0D4476FB1FBD90CB004BA520 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4476FA1FBD90CB004BA520 /* SecondViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		0D4476E71FBD8EC2004BA520 /* RestorationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestorationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D4476EB1FBD8EC2004BA520 /* RestorationUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RestorationUITests.m; sourceTree = "<group>"; };
 		0D4476ED1FBD8EC2004BA520 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D4476F91FBD90CB004BA520 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		0D4476FA1FBD90CB004BA520 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				0D4476C81FBD8EC2004BA520 /* AppDelegate.m */,
 				0D4476CA1FBD8EC2004BA520 /* ViewController.h */,
 				0D4476CB1FBD8EC2004BA520 /* ViewController.m */,
+				0D4476F91FBD90CB004BA520 /* SecondViewController.h */,
+				0D4476FA1FBD90CB004BA520 /* SecondViewController.m */,
 				0D4476CD1FBD8EC2004BA520 /* Main.storyboard */,
 				0D4476D01FBD8EC2004BA520 /* Assets.xcassets */,
 				0D4476D21FBD8EC2004BA520 /* LaunchScreen.storyboard */,
@@ -265,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D4476FB1FBD90CB004BA520 /* SecondViewController.m in Sources */,
 				0D4476CC1FBD8EC2004BA520 /* ViewController.m in Sources */,
 				0D4476D71FBD8EC2004BA520 /* main.m in Sources */,
 				0D4476C91FBD8EC2004BA520 /* AppDelegate.m in Sources */,
@@ -433,6 +439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EV459VZ2V3;
 				INFOPLIST_FILE = Restoration/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = leven.Restoration;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,6 +454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EV459VZ2V3;
 				INFOPLIST_FILE = Restoration/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = leven.Restoration;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,7 +8,14 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+ static NSString *const kMessageRestorationKey = @"kMessageRestorationKey";
+
+@interface ViewController ()<UITextFieldDelegate,
+UIViewControllerRestoration>
+
+@property (strong, nonatomic) IBOutlet UITextField *messageInput;
+
+@property (nonatomic, copy) NSString *message;
 
 @end
 
@@ -16,7 +23,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.restorationClass = [ViewController class];
+    self.restorationIdentifier = @"ViewController";
+}
+
+- (void) encodeRestorableStateWithCoder:(NSCoder *)coder {
+    [super encodeRestorableStateWithCoder:coder];
+    [coder encodeObject:_messageInput.text forKey:kMessageRestorationKey];
+}
+
+- (void) decodeRestorableStateWithCoder:(NSCoder *)coder{
+    [super decodeRestorableStateWithCoder:coder];
+    self.messageInput.text = [coder decodeObjectForKey:kMessageRestorationKey];
+}
+
++ (UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder {
+    NSLog(@"%@",NSStringFromSelector(_cmd));
+    ViewController* vc = nil;
+    UIStoryboard* sb = [coder decodeObjectForKey:UIStateRestorationViewControllerStoryboardKey];
+    if (sb) {
+        vc = (ViewController*)[sb instantiateViewControllerWithIdentifier:@"ViewController"];
+        vc.restorationIdentifier = [identifierComponents lastObject];
+        vc.restorationClass = [ViewController class];
+    }
+    return vc;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [_messageInput becomeFirstResponder];
 }
 
 
@@ -24,6 +59,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 @end
