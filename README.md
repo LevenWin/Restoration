@@ -59,5 +59,8 @@ iOSApp 进入后台后，由于系统资源紧张，后台的App 的很容易被
 ```
   在Appledegate里面我们也需要实现相应的方法,来告知系统是否需要save数据和restore数据
 当App在restore的时候默认会使用当时App切掉时的屏幕快照作为App的启动图片。如果不需要，可以在 `willEncodeRestorableStateWithCoder`的时候实现这个方法 `[application ignoreSnapshotOnNextApplicationLaunch];`
+### Restoration 复现操作
 
+手机运行在Xcode运行App之后，点击home键，使App进入后台，停止运行Xcode，或者再次运行Xcode
+，等App再次启动，就会触发Restoration
 #### 详细见[代码](https://github.com/LevenWin/Restoration);
